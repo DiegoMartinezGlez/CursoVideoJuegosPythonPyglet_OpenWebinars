@@ -15,17 +15,18 @@ pyglet.gl.glClearColor(*(255, 255, 255, 255))
 player  = Player(window, window.width//2, window.height//2)
 
 platforms = [
-    Platform(0,0, WINDOW_WIDTH, PLAT_WIDTH, batch),
-    Platform(0,0, PLAT_WIDTH, WINDOW_HEIGHT, batch),
-    Platform(0,WINDOW_HEIGHT-PLAT_WIDTH, WINDOW_WIDTH, PLAT_WIDTH, batch),
-    Platform(WINDOW_WIDTH-PLAT_WIDTH,0, PLAT_WIDTH, WINDOW_HEIGHT, batch)
+    Platform(0,0, WINDOW_WIDTH, PLAT_WIDTH),
+    Platform(0,0, PLAT_WIDTH, WINDOW_HEIGHT),
+    Platform(0,WINDOW_HEIGHT-PLAT_WIDTH, WINDOW_WIDTH, PLAT_WIDTH),
+    Platform(WINDOW_WIDTH-PLAT_WIDTH,0, PLAT_WIDTH, WINDOW_HEIGHT)
 ]
 
 @window.event
 def on_draw():
     window.clear()
-    batch.draw()
     player.draw()
+    for plat in platforms:
+        plat.draw()
 
 @window.event
 def on_key_press(symbol, modifiers):

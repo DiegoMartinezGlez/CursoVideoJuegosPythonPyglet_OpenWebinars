@@ -1,14 +1,13 @@
 import pyglet
 
-
 class Platform():
-    def __init__(self, x, y, width, height):
+    def __init__(self, x, y, width, height, color, batch):
+        self.x          = x
+        self.y          = y
         self.width      = width
         self.height     = height
-        self.rect       = pyglet.shapes.Rectangle(x, y, self.width, self.height, color=(80, 80, 80))
-
-    def draw(self):
-        self.rect.draw()
+        self.color      = color
+        self.rect       = pyglet.shapes.Rectangle(self.x, self.y, self.width, self.height, color=self.color, batch=batch)
     
     def contains(self, x, y):
         if x<=self.rect.x or x>=self.rect.x+self.rect.width:
